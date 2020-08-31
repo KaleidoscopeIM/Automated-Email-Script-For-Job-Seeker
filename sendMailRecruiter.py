@@ -45,7 +45,7 @@ def send_email(to_id,subject,mail_content):
         return "SUCCESS"
     except Exception:
         print('Error in sending email',Exception)
-        return "FAILED"      
+        return "FAILED"  
     
 def startRoutine():
     tracker_cols = ['EmailSend','Status']
