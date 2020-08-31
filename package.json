@@ -4,11 +4,21 @@
   "description": "send email tp recruiters in modern way",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "Gautam Saini",
   "license": "ISC",
   "dependencies": {
-    "node-cron": "^2.0.3"
-  }
+    "node-cron": "^2.0.3",
+    "pandas": "0.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaleidoscopeIM/Automated-Email-Script-For-Job-Seeker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KaleidoscopeIM/Automated-Email-Script-For-Job-Seeker/issues"
+  },
+  "homepage": "https://github.com/KaleidoscopeIM/Automated-Email-Script-For-Job-Seeker#readme"
 }
