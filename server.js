@@ -1,4 +1,6 @@
 var cron = require('node-cron');
+// this file has been included in .gitignore
+
 
 //local
 // cron.schedule('* * * * *', () => {

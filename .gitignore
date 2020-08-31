@@ -3,4 +3,6 @@
 # credential file
 /credentials.py
 /node_modules
+/server.js
+
 
