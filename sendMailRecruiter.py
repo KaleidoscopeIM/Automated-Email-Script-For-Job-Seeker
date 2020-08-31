@@ -48,6 +48,31 @@ def send_email(to_id,subject,mail_content):
     except Exception:
         print('Error in sending email',Exception)
         return "FAILED"  
+
+def send_self_summary_mail(sCount, fCount, slist, fList):
+    message = MIMEMultipart()
+    message['Subject'] = "Job hunting summary:: " + str(datetime.today())
+    message['From'] = my_email_id
+    message['To'] = my_email_id
+    server = SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(my_email_id, my_password)
+    email_body = ""
+    email_body += "\n\n------ Total mail send success ------ :: "+str(sCount)
+    email_body += "\n\nSuccess emails :: "
+    for a in slist:
+        email_body += a 
+        email_body += "\n"
+    email_body += "\n\n------ Total mail send failed ------ :: "+str(fCount)
+    email_body += "\n\nFailed emails :: "
+    for a in fList:
+        email_body += a 
+        email_body += "\n"
+    email_body += "\n\n-------------------------------------------- "
+    message.attach(MIMEText(email_body, 'plain'))
+    final_body = message.as_string()
+    server.sendmail(my_email_id, my_email_id, final_body)
+    server.quit()
     
 def startRoutine():
     tracker_cols = ['EmailSend','Status']
@@ -59,6 +84,9 @@ def startRoutine():
     df_processing.fillna('',inplace=True)
     df_email = df_processing[~df_processing['RecruiterEmail'].isin(df_tracker['EmailSend'])]
     totalSuccess = 0
+    totalFail = 0
+    totalSuccessEmail = []
+    totalFailEmail = []
     for index,aRow in df_email.iterrows():
         to = aRow['RecruiterEmail']
         subject = "Regarding " + aRow['JobTitle'] + " opening at " + aRow['CompanyName']
@@ -71,9 +99,14 @@ def startRoutine():
             df_tracker.loc[df_tracker['EmailSend']== to,'Status'] = status        
 
         if status == 'SUCCESS':
+            totalSuccessEmail.append(to)
             totalSuccess += 1
+        else:
+            totalFail += 1
+            totalFailEmail.append(to)
     
     today = datetime.today()
+    send_self_summary_mail(totalSuccess,totalFail,totalSuccessEmail,totalFailEmail)
     print("Total new email send ",today," :",totalSuccess)
     df_tracker.to_csv('emailTracking.csv')     
     
