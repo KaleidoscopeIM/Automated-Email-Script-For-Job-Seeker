@@ -13,7 +13,7 @@ var cron = require('node-cron');
 
 
 //server
-cron.schedule('* * * * *', () => { // 9 local == 13 on server
+cron.schedule('0 13 * * *', () => { // 9 local == 13 on server
     var spawn = require("child_process").spawn;
     var process = spawn('python3', ["./sendMailRecruiter.py", "SERVER"]);
     process.stdout.on('data', function(data) {
