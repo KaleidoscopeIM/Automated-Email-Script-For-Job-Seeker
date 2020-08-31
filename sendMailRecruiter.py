@@ -78,7 +78,7 @@ def startRoutine():
     df_tracker.to_csv('emailTracking.csv')     
     
 if __name__ == "__main__":
-    if sys.argv[1] == 'SERVER': # if server then refresh codes before executing
+    if len(sys.argv) >2 and sys.argv[1] == 'SERVER': # if server then refresh codes before executing
         repo = git.Repo('./')
         repo.remotes.origin.pull()
         #print('Git pull success')

@@ -132,25 +132,26 @@
                                                     <td style="text-align: left; ">
                                                         <div class="border_text">
                                                             <!-- <img src="images/person_2.jpg" alt="" style="width: 100px; max-width: 600px; height: auto; margin: auto; display: block;"> -->
-                                                            <h2>Dear Rishi,</h2>
-
-                                                            <p>I am so excite to come across the Cloud Developer job opening at Company2 via LinkedIn.
-                                                                <br>
-                                                            </p>
+                                                            <h3>Dear {{ content['RecruiterName'] }},</h3><br/>
+                                                            <p>
+                                                                I am so excite to come across the {{ content['JobTitle'] }} job opening at {{ content['CompanyName'] }} via LinkedIn. <br/> </p>
                                                             <p>Currently, I am pursuing a masters degree in Computer Science at the University of South Florida with a GPA of 3.96. I am expecting to receive a degree by Dec 2020. I have 5 years of professional
-                                                                experience while working with Oracle IDC and Kony ITS. The job description mentioned machine learning developer, which is perfectly aligned with my skill set. I believe that expertise and
-                                                                experience will make me a valuable asset of Company2.
-                                                                <br>
-                                                            </p>
-                                                            <p></p>
-                                                            I have attached my resume for your consideration. Please take a moment to go through that to get a better idea of who I am. I would love to share my experience with you in more detail regarding this excellent opportunity at Company2. I look forward to
-                                                            hearing back from you regarding my application. <br>
-                                                            <br>
-                                                            <p>Sincerely,<br>
+                                                                experience while working with Oracle IDC and Kony ITS. The job description mentioned {{ content['JobSkills'] }}, which is perfectly aligned with my skill set. I believe that expertise and
+                                                                experience will make me a valuable asset of {{ content['CompanyName'] }}. <br/> </p>
 
-                                                                <h3><i>Gautam Saini</i></h3>
-                                                                linkedin.com/in/gautamsaini3/ <br> 8136059772 <br> imgautamsaini@gmail.com <br>
+                                                            <p></p>I have attached my resume for your consideration. Please take a moment to go through that to get a better idea of who I am. I would love to share my experience with you in more detail regarding
+                                                            this excellent opportunity at {{ content['CompanyName'] }}. I look forward to hearing back from you regarding my application. <br/><br/> </p>
+                                                            <h3>
+                                                                <p>
+
+                                                                </p>Sincerely,<br/> Gautam Saini<br/>
+                                                            </h3>linkedin.com/in/gautamsaini3/
+
+                                                            <br/> 8136059772
+                                                            <br/> imgautamsaini@gmail.com
+                                                            <br/>
                                                             </p>
+
                                                         </div>
                                                     </td>
                                                 </tr>
