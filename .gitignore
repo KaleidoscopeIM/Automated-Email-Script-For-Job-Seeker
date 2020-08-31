@@ -3,6 +3,6 @@
 # credential file
 /credentials.py
 /node_modules
-/server.js
 emailTracking.csv
+localEmailTestData.csv
 

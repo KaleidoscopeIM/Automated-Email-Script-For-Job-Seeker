@@ -74,12 +74,16 @@ def send_self_summary_mail(sCount, fCount, slist, fList):
     server.sendmail(my_email_id, my_email_id, final_body)
     server.quit()
     
-def startRoutine():
+def startRoutine(env):
     tracker_cols = ['EmailSend','Status']
     df_tracker = pd.read_csv('emailTracking.csv',usecols=tracker_cols)
     df_tracker.reset_index(drop=True, inplace=True)
     
-    df_processing = pd.read_csv('emailData.csv')
+    if env == "SERVER":
+        df_processing = pd.read_csv('emailData.csv')
+    else:
+        df_processing = pd.read_csv('localEmailTestData.csv')
+    
     #df_processing.rename(columns={'RecruiterEmail':'rEmail','RecruiterName':'rName','JobSkills':'js','JobTitle':'jt','CompanyName':'cName','CompanyLocation':'cLocation','AdditionalDetails':'aDetails'},inplace=True)
     df_processing.fillna('',inplace=True)
     df_email = df_processing[~df_processing['RecruiterEmail'].isin(df_tracker['EmailSend'])]
@@ -111,9 +115,11 @@ def startRoutine():
     df_tracker.to_csv('emailTracking.csv')     
     
 if __name__ == "__main__":
+    env = ""
     if len(sys.argv) >=2 and sys.argv[1] == 'SERVER': # if server then refresh codes before executing
         repo = git.Repo('./')
         repo.remotes.origin.pull()
+        env = "SERVER"
         print('Git pull success')
-    startRoutine()
+    startRoutine(env)
     
