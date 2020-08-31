@@ -8,6 +8,7 @@ import os
 import json
 import pandas as pd
 from credentials import my_email_id,my_password
+from datetime import datetime
 
 def generate_email_html_content(data):
     content = json.loads(data)
@@ -70,7 +71,8 @@ def startRoutine():
         if status == 'SUCCESS':
             totalSuccess += 1
     
-    print("Total new email send today:",totalSuccess)
+    today = datetime.today()
+    print("Total new email send ",today," :",totalSuccess)
     df_tracker.to_csv('emailTracking.csv')     
     
 startRoutine()
