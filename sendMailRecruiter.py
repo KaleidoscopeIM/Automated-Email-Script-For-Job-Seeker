@@ -81,6 +81,6 @@ if __name__ == "__main__":
     if len(sys.argv) >2 and sys.argv[1] == 'SERVER': # if server then refresh codes before executing
         repo = git.Repo('./')
         repo.remotes.origin.pull()
-        #print('Git pull success')
+        print('Git pull success')
     startRoutine()
     
