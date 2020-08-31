@@ -9,6 +9,8 @@ import json
 import pandas as pd
 from credentials import my_email_id,my_password
 from datetime import datetime
+import sys 
+import git
 
 def generate_email_html_content(data):
     content = json.loads(data)
@@ -75,6 +77,10 @@ def startRoutine():
     print("Total new email send ",today," :",totalSuccess)
     df_tracker.to_csv('emailTracking.csv')     
     
-startRoutine()
-
-
+if __name__ == "__main__":
+    if sys.argv[1] == 'SERVER': # if server then refresh codes before executing
+        repo = git.Repo('./')
+        repo.remotes.origin.pull()
+        print('Git pull success')
+    startRoutine()
+    
